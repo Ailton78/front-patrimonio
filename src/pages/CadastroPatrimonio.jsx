@@ -57,7 +57,7 @@ const CadastroPatrimonio = () => {
 
 
                             {/* Campo Data de Aquisição */}
-                            <div className="col-4">
+                            <div className="col-5">
                                 <label htmlFor="dataAquisicao" className="form-label">Data de Aquisição</label>
                                 <input
                                     type="date"

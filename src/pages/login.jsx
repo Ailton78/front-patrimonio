@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const handleSubmit = (e) => {
@@ -45,7 +46,7 @@ const Login = () => {
 
                         {/* Link para recuperação de senha */}
                         <div className="mt-3 text-center">
-                            <a href="#!" className="small">Esqueceu sua senha?</a>
+                            <Link to="#!" className="small">Esqueceu sua senha?</Link>
                         </div>
                     </form>
                 </div>

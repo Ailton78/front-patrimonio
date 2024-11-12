@@ -1,16 +1,19 @@
 import { useState } from 'react'
-import './components/Header'
+
 
 import './App.css'
 
 // Componentes
-import Header from './components/Header'
+import Navbar from './components/NavBar.jsx'
 import Footer from './components/Footer.jsx'
+import Home from './pages/Home.jsx'
+//config react Router
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 //pages
 import Login from './pages/login.jsx'
-import CadastroUsuario from './pages/cadastroUsuario.jsx'
 import CadastroPatrimonio from './pages/CadastroPatrimonio.jsx'
+
 
 
 function App() {
@@ -18,14 +21,17 @@ function App() {
 
   return (
     <>
+      <BrowserRouter>
+        <Navbar></Navbar>
 
-      <Header></Header>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/cadastro' element={<CadastroPatrimonio />} />
+        </Routes>
 
-      <CadastroPatrimonio></CadastroPatrimonio>
+        <Footer></Footer>
+      </BrowserRouter>
 
-
-
-      <Footer></Footer>
     </>
   )
 }
