@@ -1,6 +1,4 @@
 import { useState } from 'react'
-
-
 import './App.css'
 
 // Componentes
@@ -13,6 +11,7 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 //pages
 import Login from './pages/login.jsx'
 import CadastroPatrimonio from './pages/CadastroPatrimonio.jsx'
+import CadastroUsuario from './pages/cadastroUsuario.jsx'
 
 
 
@@ -25,8 +24,9 @@ function App() {
         <Navbar></Navbar>
 
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/cadastro' element={<CadastroPatrimonio />} />
+          <Route path='/' element={<Login />} />
+          <Route path='/cadastro/patrimonio' element={<CadastroPatrimonio />} />
+          <Route path='/cadastro/usuario' element={<CadastroUsuario />} />
         </Routes>
 
         <Footer></Footer>

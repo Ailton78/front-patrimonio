@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useFetch from '../hooks/userFetch'; // Importando o seu hook useFetch
+import useFetch from '../hooks/userFetch'; // Importando hook useFetch
 
 const Home = () => {
     const url = "http://localhost:8080/home"; // URL da sua API
@@ -38,7 +38,7 @@ const Home = () => {
                             <td>{item.id}</td>
                             <td>{item.descricao}</td>
                             <td>{item.numeroPatrimoni}</td>
-                            <td>{item.valor.toFixed(2)}</td> {/* Formatação de valor */}
+                            <td>R$ {item.valor.toFixed(2)}</td> {/* Formatação de valor */}
                             <td>{new Date(item.dataAquisicao).toLocaleDateString()}</td> {/* Formatação da data */}
                             <td>{item.fornecedor}</td>
                             <td>{item.empenho}</td>

@@ -17,7 +17,8 @@ const Navbar = () => {
 
                     <ul className="nav nav-pills">
                         <li className="nav-item"><Link to="/" className="nav-link btn" aria-current="page">Home</Link></li>
-                        <li className="nav-item"><Link to="/cadastro" className="nav-link btn">Cadastro</Link></li>
+                        <li className="nav-item"><Link to="/cadastro/patrimonio" className="nav-link btn">Cadastrar Patrimônio</Link></li>
+                        <li className="nav-item"><Link to="/cadastro/usuario" className="nav-link btn">Cadastrar usuario</Link></li>
                         <li className="nav-item"><Link to="/sobre" className="nav-link btn" >Sobre</Link></li>
                     </ul>
                 </header>

@@ -1,6 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
+import { formattedNumber, formattedAmount } from '../scripts/utilities';
 
 const CadastroPatrimonio = () => {
+
+    // Definindo o estado para armazenar o valor do campo de texto
+    const [amount, setAmount] = useState(''); // Para o valor monetário
+    const [assetNumber, setAssetNumber] = useState(''); // Para o número do patrimônio
+
+    // Função que é chamada toda vez que o valor do campo "valor" mudar
+    const handleAmountChange = (e) => {
+        const amountFormatted = formattedAmount(e.target.value)
+        setAmount(amountFormatted); // Atualiza o valor
+    }
+
+    const handleAssetNumberChange = (e) => {
+        const numberFormatted = formattedNumber(e.target.value)
+        setAssetNumber(numberFormatted); // Atualiza o número do patrimônio
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // Lógica de envio do formulário pode ser adicionada aqui
@@ -26,17 +44,21 @@ const CadastroPatrimonio = () => {
                                     id="numeroPatrimonio"
                                     placeholder="Número do patrimônio"
                                     required
+                                    value={assetNumber} // O valor do campo é controlado pelo estado
+                                    onChange={handleAssetNumberChange} // Chama a função sempre que o campo mudar
                                 />
                             </div>
                             {/* Campo Valor */}
                             <div className="col">
                                 <label htmlFor="valor" className="form-label">Valor</label>
                                 <input
-                                    type="number"
+                                    type="text"
                                     className="form-control"
                                     id="valor"
                                     placeholder="Valor do patrimônio"
                                     required
+                                    value={amount} // O valor do campo é controlado pelo estado
+                                    onChange={handleAmountChange} // Chama a função sempre que o campo mudar
                                 />
                             </div>
 
