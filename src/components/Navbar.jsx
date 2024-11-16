@@ -19,7 +19,7 @@ const Navbar = () => {
                         <li className="nav-item"><Link to="/" className="nav-link btn" aria-current="page">Home</Link></li>
                         <li className="nav-item"><Link to="/cadastro/patrimonio" className="nav-link btn">Cadastrar Patrimônio</Link></li>
                         <li className="nav-item"><Link to="/cadastro/usuario" className="nav-link btn">Cadastrar usuario</Link></li>
-                        <li className="nav-item"><Link to="/sobre" className="nav-link btn" >Sobre</Link></li>
+                        <li className="nav-item"><Link to="/cadastro/sobre" className="nav-link btn" >Relatorio</Link></li>
                     </ul>
                 </header>
             </div>

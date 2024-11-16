@@ -30,6 +30,7 @@ const Home = () => {
                         <th>Local</th>
                         <th>Data de Cadastro</th>
                         <th>Usuário</th>
+                        <th>Forma/Aquisição</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,7 +38,7 @@ const Home = () => {
                         <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.descricao}</td>
-                            <td>{item.numeroPatrimoni}</td>
+                            <td>{item.numeroPatrimonio}</td>
                             <td>R$ {item.valor.toFixed(2)}</td> {/* Formatação de valor */}
                             <td>{new Date(item.dataAquisicao).toLocaleDateString()}</td> {/* Formatação da data */}
                             <td>{item.fornecedor}</td>
@@ -45,6 +46,7 @@ const Home = () => {
                             <td>{item.local}</td>
                             <td>{new Date(item.dataCadastro).toLocaleDateString()}</td> {/* Formatação da data */}
                             <td>{item.usuario.nome}</td>
+                            <td>{item.formaDeAquisicao}</td>
                         </tr>
                     ))}
                 </tbody>

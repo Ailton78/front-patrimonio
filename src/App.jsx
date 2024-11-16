@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 // Componentes
-import Navbar from './components/NavBar.jsx'
+import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
 //config react Router
@@ -27,6 +27,7 @@ function App() {
           <Route path='/' element={<Login />} />
           <Route path='/cadastro/patrimonio' element={<CadastroPatrimonio />} />
           <Route path='/cadastro/usuario' element={<CadastroUsuario />} />
+          <Route path='/cadastro/sobre' element={<Home />} />
         </Routes>
 
         <Footer></Footer>

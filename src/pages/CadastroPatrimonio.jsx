@@ -30,11 +30,8 @@ const CadastroPatrimonio = () => {
             <div className="row justify-content-center">
                 <div className="col-12 col-md-8 col-lg-6">
                     <form onSubmit={handleSubmit} className="border p-4 rounded shadow">
-
                         <h2 className="text-center mb-4"> Cadastro de Patrimônio</h2>
-
                         <div className="row">
-
                             {/* Campo Número do Patrimônio */}
                             <div className="col">
                                 <label htmlFor="numeroPatrimonio" className="form-label">Número do Patrimônio</label>
@@ -61,22 +58,8 @@ const CadastroPatrimonio = () => {
                                     onChange={handleAmountChange} // Chama a função sempre que o campo mudar
                                 />
                             </div>
-
                         </div>
                         <div className='row'>
-                            {/* Campo Descrição */}
-                            <div className="col">
-                                <label htmlFor="descricao" className="form-label">Descrição</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="descricao"
-                                    placeholder="Descrição do patrimônio"
-                                    required
-                                />
-                            </div>
-
-
 
                             {/* Campo Data de Aquisição */}
                             <div className="col-5">
@@ -88,19 +71,31 @@ const CadastroPatrimonio = () => {
                                     required
                                 />
                             </div>
+                            {/* Campo Fornecedor */}
+                            <div className="col">
+                                <label htmlFor="fornecedor" className="form-label">Fornecedor</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="fornecedor"
+                                    placeholder="Nome do fornecedor"
+                                    required
+                                />
+                            </div>
+
                         </div>
-                        {/* Campo Fornecedor */}
+
+
                         <div className="mb-3">
-                            <label htmlFor="fornecedor" className="form-label">Fornecedor</label>
+                            <label htmlFor="descricao" className="form-label">Descrição</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                id="fornecedor"
-                                placeholder="Nome do fornecedor"
+                                id="descricao"
+                                placeholder="Descrição"
                                 required
                             />
                         </div>
-
                         {/* Campo Empenho */}
                         <div className="mb-3">
                             <label htmlFor="empenho" className="form-label">Empenho</label>
@@ -112,7 +107,17 @@ const CadastroPatrimonio = () => {
                                 required
                             />
                         </div>
-
+                        {/* Forma de Aquisição*/}
+                        <div className="mb-3">
+                            <label htmlFor="froma-aquisicao" className="form-label">Forma de Aquisição</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="froma-aquisicao"
+                                placeholder="Forma de Aquisição"
+                                required
+                            />
+                        </div>
                         {/* Campo Local */}
                         <div className="mb-3">
                             <label htmlFor="local" className="form-label">Local</label>
@@ -124,7 +129,6 @@ const CadastroPatrimonio = () => {
                                 required
                             />
                         </div>
-
                         {/* Botão de Enviar */}
                         <div className="d-grid gap-2">
                             <button type="submit" className="btn btn-primary btn-lg">Cadastrar Patrimônio</button>
