@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 import img1 from "../assets/Relatorio.png";
 import img2 from "../assets/cadastroUser.png";
@@ -49,6 +49,7 @@ function Home() {
                             </Link>
                         </div>
                     </div>
+                    <Outlet />
                 </div>
             </div>
         </div>

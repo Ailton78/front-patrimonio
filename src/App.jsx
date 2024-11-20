@@ -9,6 +9,7 @@ import CadastroUsuario from "./pages/cadastroUsuario";
 import Error404 from "./pages/Erro404";
 import Home from "./pages/Home";
 import Listas from "./pages/Listas";
+import Sobre from "./pages/Sobre";
 
 export default function App() {
   return (
@@ -21,7 +22,9 @@ export default function App() {
         <Route path="/" element={<Login />} />
         <Route path="/patrimonio" element={<CadastroPatrimonio />} />
         <Route path="/usuario" element={<CadastroUsuario />} />
-        <Route path="/home" element={<Listas />} />
+        <Route path="/relatorios" element={<Listas />} />
+        <Route path="/sobre" element={<Sobre />} />
+        <Route path="/home" element={<Home />} />
 
         {/* Rota para página de erro 404, para qualquer caminho desconhecido */}
         <Route path="*" element={<Error404 />} />

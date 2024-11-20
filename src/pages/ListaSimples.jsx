@@ -16,7 +16,7 @@ const personalizacao = {
 }
 const recuperadorConteudoPdf = () => document.getElementById('conteudo');
 
-const Listas = () => {
+const ListaSimples = () => {
     const url = "http://localhost:8080/patrimonio"; // URL da sua API
     const { data, loading, error } = useFetch(url); // Usando o hook useFetch
 
@@ -47,12 +47,9 @@ const Listas = () => {
                                 <th>Código</th>
                                 <th>Descrição</th>
                                 <th>Nº Patrimônio</th>
-                                <th>Valor</th>
                                 <th>Data de Aquisição</th>
                                 <th>Forma de Aquisição</th>
-                                <th>Fornecedor</th>
-                                <th>Empenho</th>
-                                <th>Local</th>
+                                <th>Local Destino</th>
                                 <th>Data de Cadastro</th>
                             </tr>
                         </thead>
@@ -62,11 +59,8 @@ const Listas = () => {
                                     <td>{item.id}</td>
                                     <td>{item.descricao}</td>
                                     <td>{item.numeroPatrimonio}</td>
-                                    <td>R$:{item.valor}</td>
                                     <td>{new Date(item.dataAquisicao).toLocaleDateString()}</td> {/* Formatação da data */}
                                     <td>{item.formaDeAquisicao}</td>
-                                    <td>{item.fornecedor}</td>
-                                    <td>{item.empenho}</td>
                                     <td>{item.local}</td>
                                     <td>{new Date(item.dataCadastro).toLocaleDateString()}</td> {/* Formatação da data */}
 
@@ -82,4 +76,4 @@ const Listas = () => {
     );
 };
 
-export default Listas;
+export default ListaSimples;

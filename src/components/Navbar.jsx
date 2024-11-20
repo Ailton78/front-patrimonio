@@ -21,6 +21,9 @@ const Navbar = () => {
                         <li className="nav-item">
                             <Link to="/home" className="nav-link btn">Home</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/sobre" className="nav-link btn">Sobre</Link>
+                        </li>
                         {/* Opcional: Se você quiser adicionar um link de logout */}
                         {/* <li className="nav-item">
                             <Link to="/logout" className="nav-link btn">Logout</Link>
