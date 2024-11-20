@@ -1,6 +1,10 @@
 import React from 'react';
+
 import { useState } from 'react';
 import { formattedNumber, formattedAmount } from '../scripts/utilities';
+
+
+
 
 const CadastroPatrimonio = () => {
 
@@ -27,8 +31,9 @@ const CadastroPatrimonio = () => {
 
     return (
         <div className="container">
+
             <div className="row justify-content-center">
-                <div className="col-12 col-md-8 col-lg-6">
+                <div className="col col-md-8 col-lg-6">
                     <form onSubmit={handleSubmit} className="border p-4 rounded shadow">
                         <h2 className="text-center mb-4"> Cadastro de Patrimônio</h2>
                         <div className="row">
@@ -135,7 +140,9 @@ const CadastroPatrimonio = () => {
                         </div>
                     </form>
                 </div>
+
             </div>
+
         </div>
     );
 };

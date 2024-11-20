@@ -1,40 +1,34 @@
-import { useState } from 'react'
-import './App.css'
-
+import { Routes, Route } from "react-router-dom";
 // Componentes
-import Navbar from './components/Navbar.jsx'
-import Footer from './components/Footer.jsx'
-import Home from './pages/Home.jsx'
-//config react Router
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+// Páginas
+import CadastroPatrimonio from "./pages/CadastroPatrimonio";
+import Login from "./pages/Login";
+import CadastroUsuario from "./pages/cadastroUsuario";
+import Error404 from "./pages/Erro404";
+import Home from "./pages/Home";
+import Listas from "./pages/Listas";
 
-//pages
-import Login from './pages/login.jsx'
-import CadastroPatrimonio from './pages/CadastroPatrimonio.jsx'
-import CadastroUsuario from './pages/cadastroUsuario.jsx'
-
-
-
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Navbar></Navbar>
+    <div>
+      {/* Componente Navbar estará presente em todas as páginas */}
+      <Navbar />
 
-        <Routes>
-          <Route path='/' element={<Login />} />
-          <Route path='/cadastro/patrimonio' element={<CadastroPatrimonio />} />
-          <Route path='/cadastro/usuario' element={<CadastroUsuario />} />
-          <Route path='/cadastro/sobre' element={<Home />} />
-        </Routes>
+      <Routes>
+        {/* Rota para Login, com rotas aninhadas para outras páginas */}
+        <Route path="/" element={<Login />} />
+        <Route path="/patrimonio" element={<CadastroPatrimonio />} />
+        <Route path="/usuario" element={<CadastroUsuario />} />
+        <Route path="/home" element={<Listas />} />
 
-        <Footer></Footer>
-      </BrowserRouter>
+        {/* Rota para página de erro 404, para qualquer caminho desconhecido */}
+        <Route path="*" element={<Error404 />} />
+      </Routes>
 
-    </>
-  )
+      {/* Componente Footer estará presente em todas as páginas */}
+      <Footer />
+    </div>
+  );
 }
-
-export default App
