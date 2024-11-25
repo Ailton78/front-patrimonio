@@ -61,7 +61,7 @@ const ListaSimples = () => {
                                     <td>{item.numeroPatrimonio}</td>
                                     <td>{new Date(item.dataAquisicao).toLocaleDateString()}</td> {/* Formatação da data */}
                                     <td>{item.formaDeAquisicao}</td>
-                                    <td>{item.local}</td>
+                                    <td>{item.localPatrimonio}</td>
                                     <td>{new Date(item.dataCadastro).toLocaleDateString()}</td> {/* Formatação da data */}
 
                                 </tr>
