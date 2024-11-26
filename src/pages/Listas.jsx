@@ -16,7 +16,23 @@ const recuperadorConteudoPdf = () => document.getElementById('conteudo');
 
 const Listas = () => {
     const url = "http://localhost:8080/patrimonio"; // URL da sua API
-    const { data, loading, error, totalPages, currentPage, setCurrentPage } = useFetch(url, 0, 10); // Usando paginação
+    const [page, setPage] = useState(0); // Página atual
+    const [size, setSize] = useState(10); // Itens por página
+
+    // Chamando o hook com a URL da API
+    const { data, loading, error, pagination } = useFetch(url, page, size);
+
+    const handleNextPage = () => {
+        if (page < pagination.totalPages - 1) {
+            setPage(page + 1);
+        }
+    };
+
+    const handlePreviousPage = () => {
+        if (page > 0) {
+            setPage(page - 1);
+        }
+    };
 
     if (loading) {
         return <div className="text-center"><p>Carregando...</p></div>;
@@ -37,24 +53,20 @@ const Listas = () => {
     // Função para formatar datas
     const formatarData = (data) => {
         if (data) {
-            return new Date(data).toLocaleDateString();
+            const dateObj = new Date(data);
+
+            // Verifica se a data é válida
+            if (isNaN(dateObj.getTime())) {
+                return 'Data inválida';
+            }
+
+            // Formata a data no formato DD/MM/YYYY (você pode alterar para outro formato se necessário)
+            return dateObj.toLocaleDateString('pt-BR');
         }
         return 'Data não disponível';
-    }
-
-    // Função para avançar uma página
-    const handleNextPage = () => {
-        if (currentPage < totalPages - 1) {
-            setCurrentPage(currentPage + 1);
-        }
     };
 
-    // Função para voltar uma página
-    const handlePrevPage = () => {
-        if (currentPage > 0) {
-            setCurrentPage(currentPage - 1);
-        }
-    };
+
 
     return (
         <div className="container mt-4">
@@ -67,7 +79,7 @@ const Listas = () => {
                 </div>
 
                 <h1 className="text-center mb-4">Tabela de Patrimônios</h1>
-                <table className="table table-bordered table-striped">
+                <table className="table  table-striped">
                     <thead>
                         <tr>
                             <th>Código</th>
@@ -106,15 +118,15 @@ const Listas = () => {
                     </tbody>
                 </table>
 
-                {/* Navegação de página */}
-                <div className="d-flex justify-content-between">
-                    <button className="btn btn-secondary" onClick={handlePrevPage} disabled={currentPage === 0}>
-                        Anterior
-                    </button>
-                    <button className="btn btn-secondary" onClick={handleNextPage} disabled={currentPage === totalPages - 1}>
-                        Próxima
-                    </button>
-                </div>
+            </div>
+            {/* Navegação de página */}
+            <div className="d-flex justify-content-between">
+                <button className="btn btn-secondary" onClick={handlePreviousPage} disabled={page === 0}>
+                    Anterior
+                </button>
+                <button className="btn btn-secondary" onClick={handleNextPage} disabled={page === pagination.totalPages - 1}>
+                    Próxima
+                </button>
             </div>
 
             <div className="text-center mt-4">
