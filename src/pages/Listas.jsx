@@ -6,8 +6,11 @@ import Logo from "../assets/LogoCapanema.png";
 const personalizacao = {
     method: 'open',
     page: {
+        // margin is in MM, default is Margin.NONE = 0
         margin: Margin.SMALL,
+        // default is 'A4'
         format: 'A4',
+        // default is 'portrait'
         orientation: 'landscape',
     },
 }
@@ -119,6 +122,16 @@ const Listas = () => {
                 </table>
 
             </div>
+            <div className="col-12">
+                <div className="d-flex justify-content-center mt-4"> {/* Centraliza o botão */}
+                    <button
+                        className="btn btn-primary" // Estilo do botão
+                        onClick={() => generatePDF(recuperadorConteudoPdf, personalizacao)}
+                    >
+                        Gerar PDF
+                    </button>
+                </div>
+            </div>
             {/* Navegação de página */}
             <div className="d-flex justify-content-between">
                 <button className="btn btn-secondary" onClick={handlePreviousPage} disabled={page === 0}>
@@ -129,14 +142,6 @@ const Listas = () => {
                 </button>
             </div>
 
-            <div className="text-center mt-4">
-                <button
-                    className="btn btn-primary"
-                    onClick={() => generatePDF(recuperadorConteudoPdf, personalizacao)}
-                >
-                    Gerar PDF
-                </button>
-            </div>
         </div>
     );
 };

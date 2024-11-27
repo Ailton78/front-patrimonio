@@ -1,78 +1,113 @@
-
+import React, { useState } from 'react';  // Importando useState
 import generatePDF, { Margin } from 'react-to-pdf';
-import useFetch from '../hooks/userFetch'; // Importando hook useFetch
-import Logo from "../assets/LogoCapanema.png"
+import useFetch from '../hooks/userFetch';  // Importando hook useFetch
+import Logo from "../assets/LogoCapanema.png";
 
+// Configuração do PDF
 const personalizacao = {
     method: 'open',
     page: {
-        // margin is in MM, default is Margin.NONE = 0
         margin: Margin.SMALL,
-        // default is 'A4'
         format: 'A4',
-        // default is 'portrait'
         orientation: 'landscape',
     },
-}
+};
+
 const recuperadorConteudoPdf = () => document.getElementById('conteudo');
 
 const ListaSimples = () => {
     const url = "http://localhost:8080/patrimonio"; // URL da sua API
-    const { data, loading, error } = useFetch(url); // Usando o hook useFetch
+    const [page, setPage] = useState(0);  // Página atual
+    const [size, setSize] = useState(10);  // Itens por página
+
+    // Chamando o hook com a URL da API
+    const { data, loading, error, pagination } = useFetch(url, page, size);
 
     if (loading) {
-        return <div className="text-center"><p>Carregando...</p></div>; // Mensagem de carregamento
+        return <div className="text-center"><p>Carregando...</p></div>;
     }
 
     if (error) {
-        return <div className="text-center"><p>Erro: {error}</p></div>; // Mensagem de erro
+        return <div className="text-center"><p>Erro: {error}</p></div>;
     }
 
-    // Verificando se há dados e criando a tabela
+    // Funções para navegação entre as páginas
+    const handleNextPage = () => {
+        if (pagination && page < pagination.totalPages - 1) {
+            setPage(page + 1);
+        }
+    };
+
+    const handlePreviousPage = () => {
+        if (pagination && page > 0) {
+            setPage(page - 1);
+        }
+    };
+
+    // Função para formatar a data
+    const formatDate = (date) => {
+        return new Date(date).toLocaleDateString('pt-BR');  // Exemplo: 'DD/MM/YYYY'
+    };
+
     return (
-        <>
-            <div className="container mt-4">
-                <div id="conteudo">
-                    <div className='col-3'>
-                        <figure className="figure">
-                            <img src={Logo} className="figure-img img-fluid rounded" alt="..." />
-                            <figcaption className="figure-caption"></figcaption>
-                        </figure>
-                    </div>
-
-                    <h1 className="text-center mb-4">Tabela de Patrimônios</h1>
-                    <table className="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Código</th>
-                                <th>Descrição</th>
-                                <th>Nº Patrimônio</th>
-                                <th>Data de Aquisição</th>
-                                <th>Forma de Aquisição</th>
-                                <th>Local Destino</th>
-                                <th>Data de Cadastro</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data && data.map(item => (
-                                <tr key={item.id}>
-                                    <td>{item.id}</td>
-                                    <td>{item.descricao}</td>
-                                    <td>{item.numeroPatrimonio}</td>
-                                    <td>{new Date(item.dataAquisicao).toLocaleDateString()}</td> {/* Formatação da data */}
-                                    <td>{item.formaDeAquisicao}</td>
-                                    <td>{item.localPatrimonio}</td>
-                                    <td>{new Date(item.dataCadastro).toLocaleDateString()}</td> {/* Formatação da data */}
-
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+        <div className="container mt-4">
+            <div id="conteudo">
+                <div className='col-3'>
+                    <figure className="figure">
+                        <img src={Logo} className="figure-img img-fluid rounded" alt="Logo" />
+                        <figcaption className="figure-caption"></figcaption>
+                    </figure>
                 </div>
-                <button onClick={() => generatePDF(recuperadorConteudoPdf, personalizacao)}>Gerar PDF</button>
+
+                <h1 className="text-center mb-4">Tabela de Patrimônios</h1>
+                <table className="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Descrição</th>
+                            <th>Nº Patrimônio</th>
+                            <th>Data de Aquisição</th>
+                            <th>Forma de Aquisição</th>
+                            <th>Local Destino</th>
+                            <th>Data de Cadastro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data && data.map(item => (
+                            <tr key={item.id}>
+                                <td>{item.id}</td>
+                                <td>{item.descricao}</td>
+                                <td>{item.numeroPatrimonio}</td>
+                                <td>{formatDate(item.dataAquisicao)}</td>
+                                <td>{item.formaDeAquisicao}</td>
+                                <td>{item.localPatrimonio}</td>
+                                <td>{formatDate(item.dataCadastro)}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
 
-        </>
+            <div className="col-12">
+                <div className="d-flex justify-content-center mt-4">
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => generatePDF(recuperadorConteudoPdf, personalizacao)}
+                    >
+                        Gerar PDF
+                    </button>
+                </div>
+            </div>
+
+            <div className="d-flex justify-content-between mt-4">
+                <button className="btn btn-secondary" onClick={handlePreviousPage} disabled={page === 0}>
+                    Anterior
+                </button>
+                <button className="btn btn-secondary" onClick={handleNextPage} disabled={pagination && page === pagination.totalPages - 1}>
+                    Próxima
+                </button>
+            </div>
+        </div>
     );
 };
 

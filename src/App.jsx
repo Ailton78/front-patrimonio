@@ -10,6 +10,7 @@ import Error404 from "./pages/Erro404";
 import Home from "./pages/Home";
 import Listas from "./pages/Listas";
 import Sobre from "./pages/Sobre";
+import Relatorios from "./pages/Relatorios";
 
 export default function App() {
   return (
@@ -22,7 +23,7 @@ export default function App() {
         <Route path="/" element={<Login />} />
         <Route path="/patrimonio" element={<CadastroPatrimonio />} />
         <Route path="/usuario" element={<CadastroUsuario />} />
-        <Route path="/relatorios" element={<Listas />} />
+        <Route path="/relatorios" element={<Relatorios />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/home" element={<Home />} />
 
