@@ -63,11 +63,16 @@ const Listas = () => {
                 return 'Data inválida';
             }
 
-            // Formata a data no formato DD/MM/YYYY (você pode alterar para outro formato se necessário)
-            return dateObj.toLocaleDateString('pt-BR');
+            // Formata a data no formato DD/MM/YYYY e a hora no formato HH:MM:SS
+            const dataFormatada = dateObj.toLocaleDateString('pt-BR');
+            const horaFormatada = dateObj.toLocaleTimeString('pt-BR', { hour12: false });
+
+            // Retorna data e hora formatadas
+            return `${dataFormatada} ${horaFormatada}`;
         }
         return 'Data não disponível';
     };
+
 
 
 
@@ -81,7 +86,7 @@ const Listas = () => {
                     </figure>
                 </div>
 
-                <h1 className="text-center mb-4">Tabela de Patrimônios</h1>
+                <h3 className="text-center mb-4">Tabela de Patrimônios</h3>
                 <table className="table  table-striped">
                     <thead>
                         <tr>

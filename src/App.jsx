@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import "./App.css"
 // Componentes
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -8,13 +9,12 @@ import Login from "./pages/Login";
 import CadastroUsuario from "./pages/cadastroUsuario";
 import Error404 from "./pages/Erro404";
 import Home from "./pages/Home";
-import Listas from "./pages/Listas";
 import Sobre from "./pages/Sobre";
 import Relatorios from "./pages/Relatorios";
 
 export default function App() {
   return (
-    <div>
+    <div className="App">
       {/* Componente Navbar estará presente em todas as páginas */}
       <Navbar />
 

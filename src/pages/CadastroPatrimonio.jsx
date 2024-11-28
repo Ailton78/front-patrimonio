@@ -34,11 +34,6 @@ const CadastroPatrimonio = () => {
         setRawAmount(numericValue);
     };
 
-    const handleAssetNumberChange = (e) => {
-        const numberFormatted = formattedNumber(e.target.value);
-        setAssetNumber(numberFormatted);
-    };
-
     // Função para enviar os dados do formulário
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -120,7 +115,7 @@ const CadastroPatrimonio = () => {
                                     placeholder="Número do patrimônio"
                                     required
                                     value={assetNumber}
-                                    onChange={handleAssetNumberChange}
+                                    onChange={(e) => setAssetNumber(e.target.value.toUpperCase())}
                                 />
                             </div>
 
@@ -163,7 +158,7 @@ const CadastroPatrimonio = () => {
                                     placeholder="Nome do fornecedor"
                                     required
                                     value={supplier}
-                                    onChange={(e) => setSupplier(e.target.value)}
+                                    onChange={(e) => setSupplier(e.target.value.toUpperCase())}
                                 />
                             </div>
                         </div>
@@ -178,7 +173,7 @@ const CadastroPatrimonio = () => {
                                 placeholder="Descrição"
                                 required
                                 value={description}
-                                onChange={(e) => setDescription(e.target.value)}
+                                onChange={(e) => setDescription(e.target.value.toUpperCase())}
                             />
                         </div>
 
@@ -192,7 +187,7 @@ const CadastroPatrimonio = () => {
                                 placeholder="Número do empenho"
                                 required
                                 value={commitment}
-                                onChange={(e) => setCommitment(e.target.value)}
+                                onChange={(e) => setCommitment(e.target.value.toUpperCase())}
                             />
                         </div>
 
@@ -206,7 +201,7 @@ const CadastroPatrimonio = () => {
                                 placeholder="Forma de Aquisição"
                                 required
                                 value={acquisitionType}
-                                onChange={(e) => setAcquisitionType(e.target.value)}
+                                onChange={(e) => setAcquisitionType(e.target.value.toUpperCase())}
                             />
                         </div>
 
@@ -220,7 +215,7 @@ const CadastroPatrimonio = () => {
                                 placeholder="Local de armazenamento"
                                 required
                                 value={location}
-                                onChange={(e) => setLocation(e.target.value)}
+                                onChange={(e) => setLocation(e.target.value.toUpperCase())}
                             />
                         </div>
 

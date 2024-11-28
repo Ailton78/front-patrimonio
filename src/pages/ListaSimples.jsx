@@ -59,8 +59,8 @@ const ListaSimples = () => {
                     </figure>
                 </div>
 
-                <h1 className="text-center mb-4">Tabela de Patrimônios</h1>
-                <table className="table table-bordered table-striped">
+                <h3 className="text-center mb-4">Tabela de Patrimônios</h3>
+                <table className="table  table-striped">
                     <thead>
                         <tr>
                             <th>Código</th>

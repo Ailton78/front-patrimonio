@@ -19,6 +19,7 @@ const Relatorios = () => {
     return (
         <div className='container'>
             {/* Grupo de botões de rádio */}
+
             <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
                 {/* Botão de Rádio para Relatório Completo */}
                 <input
@@ -47,10 +48,12 @@ const Relatorios = () => {
                 <label className="btn btn-outline-primary" htmlFor="btnradio2">
                     Relatório Simples
                 </label>
+
             </div>
 
             {/* Exibe o componente de relatório baseado na seleção */}
             <div>
+
                 {selectedReport === 'completo' ? <Listas /> : <ListaSimples />}
             </div>
         </div>
