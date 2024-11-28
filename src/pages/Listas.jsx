@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import generatePDF, { Margin } from 'react-to-pdf';
 import useFetch from '../hooks/userFetch'; // Importando o hook atualizado
 import Logo from "../assets/LogoCapanema.png";
+import { formattedDate, formattedDateTime, formatValue } from '../scripts/utilities';
+
 
 const personalizacao = {
     method: 'open',
@@ -45,37 +47,6 @@ const Listas = () => {
         return <div className="text-center"><p>Erro: {error}</p></div>;
     }
 
-    // Função para formatar valores monetários
-    const formatarValor = (valor) => {
-        if (valor) {
-            return `R$${valor.toFixed(2).replace('.', ',')}`;
-        }
-        return 'Não disponível';
-    }
-
-    // Função para formatar datas
-    const formatarData = (data) => {
-        if (data) {
-            const dateObj = new Date(data);
-
-            // Verifica se a data é válida
-            if (isNaN(dateObj.getTime())) {
-                return 'Data inválida';
-            }
-
-            // Formata a data no formato DD/MM/YYYY e a hora no formato HH:MM:SS
-            const dataFormatada = dateObj.toLocaleDateString('pt-BR');
-            const horaFormatada = dateObj.toLocaleTimeString('pt-BR', { hour12: false });
-
-            // Retorna data e hora formatadas
-            return `${dataFormatada} ${horaFormatada}`;
-        }
-        return 'Data não disponível';
-    };
-
-
-
-
     return (
         <div className="container mt-4">
             <div id="conteudo">
@@ -109,13 +80,13 @@ const Listas = () => {
                                     <td>{item.id}</td>
                                     <td>{item.descricao || 'Não disponível'}</td>
                                     <td>{item.numeroPatrimonio || 'Não disponível'}</td>
-                                    <td>{formatarValor(item.valor)}</td>
-                                    <td>{formatarData(item.dataAquisicao)}</td>
+                                    <td>{formatValue(item.valor)}</td>
+                                    <td>{formattedDate(item.dataAquisicao)}</td>
                                     <td>{item.formaDeAquisicao || 'Não disponível'}</td>
                                     <td>{item.fornecedor || 'Não disponível'}</td>
                                     <td>{item.empenho || 'Não disponível'}</td>
                                     <td>{item.localPatrimonio || 'Não disponível'}</td>
-                                    <td>{formatarData(item.dataCadastro)}</td>
+                                    <td>{formattedDateTime(item.dataCadastro)}</td>
                                 </tr>
                             ))
                         ) : (

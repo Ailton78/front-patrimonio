@@ -2,6 +2,8 @@ import React, { useState } from 'react';  // Importando useState
 import generatePDF, { Margin } from 'react-to-pdf';
 import useFetch from '../hooks/userFetch';  // Importando hook useFetch
 import Logo from "../assets/LogoCapanema.png";
+import { formattedDate, formattedDateTime } from '../scripts/utilities';
+
 
 // Configuração do PDF
 const personalizacao = {
@@ -44,10 +46,6 @@ const ListaSimples = () => {
         }
     };
 
-    // Função para formatar a data
-    const formatDate = (date) => {
-        return new Date(date).toLocaleDateString('pt-BR');  // Exemplo: 'DD/MM/YYYY'
-    };
 
     return (
         <div className="container mt-4">
@@ -78,10 +76,10 @@ const ListaSimples = () => {
                                 <td>{item.id}</td>
                                 <td>{item.descricao}</td>
                                 <td>{item.numeroPatrimonio}</td>
-                                <td>{formatDate(item.dataAquisicao)}</td>
+                                <td>{formattedDate(item.dataAquisicao)}</td>
                                 <td>{item.formaDeAquisicao}</td>
                                 <td>{item.localPatrimonio}</td>
-                                <td>{formatDate(item.dataCadastro)}</td>
+                                <td>{formattedDateTime(item.dataCadastro)}</td>
                             </tr>
                         ))}
                     </tbody>
